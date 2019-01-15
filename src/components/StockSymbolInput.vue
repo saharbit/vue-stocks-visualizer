@@ -4,17 +4,17 @@
       class="w-1/3"
       placeholder="STOCK SYMBOL (e.g AAPL)"
       v-model="input"
-      @keyup.enter.native="fetchStockPrice"
+      @keyup.enter.native="addStock(input)"
     />
-    <div class="mt-2">{{ price }}</div>
   </div>
 </template>
 
 <script>
-import StockPriceService from "@/views/StockPriceService";
-import { mapMutations } from "vuex";
+import { mapActions } from "vuex";
+import store from "@/store";
 
 export default {
+  store,
   name: "StockSymbolInput",
   data() {
     return {
@@ -22,7 +22,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutations(["addStock"])
+    ...mapActions(["addStock"])
   }
 };
 </script>
