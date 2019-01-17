@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "StockCard",``
+  name: "StockCard",
   props: {
     stock: Object
   }

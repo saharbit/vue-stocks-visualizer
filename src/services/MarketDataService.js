@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default class StockPriceService {
+export default class MarketDataService {
   static async getStockPriceBySymbol(symbol) {
     const response = await axios.get(
       `https://api.iextrading.com/1.0/stock/${symbol}/price`

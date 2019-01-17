@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import store from "@/store";
-import StockSymbolInput from "@/components/StockSymbolInput";
-import StockCard from "@/components/StockCard";
+import store from '../store'
+import StockSymbolInput from "../components/StockSymbolInput";
+import StockCard from "../components/StockCard";
 
 export default {
   name: "home",

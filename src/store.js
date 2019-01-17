@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import StockPriceService from "./StockPriceService";
+import MarketDataService from "./services/MarketDataService";
 
 Vue.use(Vuex);
 
@@ -16,7 +16,7 @@ export default new Vuex.Store({
   actions: {
     async addStock({ commit }, stockSymbol) {
       console.log(stockSymbol);
-      const stockPrice = await StockPriceService.getStockPriceBySymbol(
+      const stockPrice = await MarketDataService.getStockPriceBySymbol(
         stockSymbol
       );
       commit("addStock", { stockSymbol, stockPrice });
