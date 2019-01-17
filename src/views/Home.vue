@@ -2,23 +2,22 @@
   <div>
     <img alt="Vue logo" src="../assets/logo.png">
     <StockSymbolInput/>
-    <ul>
-      <div v-for="stock in stocks" :key="stock.name">{{stock.name}}</div>
-    </ul>
+    <div class="flex flex-row justify-center mt-5">
+      <StockCard v-for="stock in stocks" :key="stock.stockSymbol" :stock="stock"/>
+    </div>
   </div>
 </template>
 
 <script>
 import store from "@/store";
 import StockSymbolInput from "@/components/StockSymbolInput";
-// import StockCard from "@/components/StockCard";
+import StockCard from "@/components/StockCard";
 
 export default {
-  store,
   name: "home",
   components: {
-    StockSymbolInput
-    // StockCard
+    StockSymbolInput,
+    StockCard
   },
   computed: {
     stocks() {
@@ -27,3 +26,6 @@ export default {
   }
 };
 </script>
+
+<style>
+</style>
