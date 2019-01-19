@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import store from '../store'
+import store from '../store/store'
 import StockSymbolInput from "../components/StockSymbolInput";
 import StockCard from "../components/StockCard";
 

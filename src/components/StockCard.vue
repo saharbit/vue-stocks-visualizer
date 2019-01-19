@@ -1,30 +1,38 @@
 <template>
   <el-card class="box-card text-left mx-2">
-    <div slot="header" class="font-bold uppercase">
+    <div slot="header" class="uppercase flex justify-between items-center ">
       <span>{{ stock.stockSymbol }}</span>
+      <i class="el-icon-remove-outline cursor-pointer" @click="removeStock(stock.stockSymbol)"></i>
     </div>
-    <div class="text">{{'Price ' + stock.stockPrice}}</div>
-    <div class="text">{{'Price ' + stock.stockPrice}}</div>
-    <div class="text">{{'Price ' + stock.stockPrice}}</div>
+    <div>
+      <div class="mb-5"><span class="text-xl font-bold">{{ stock.stockPrice }}</span><span> USD</span></div>
+      <el-input-number class="mx-auto" v-model="amount" :min="0"/>
+    </div>
   </el-card>
 </template>
 
 <script>
-export default {
-  name: "StockCard",
-  props: {
-    stock: Object
-  }
-};
+  import { mapMutations } from 'vuex';
+  import { REMOVE_STOCK } from "../store/mutation-types";
+
+  export default {
+    name: "StockCard",
+    data () {
+      return {
+        amount: 0
+      }
+    },
+    props: {
+      stock: Object
+    },
+    methods: {
+      ...mapMutations({removeStock: REMOVE_STOCK})
+    }
+  };
 </script>
 
 <style>
-.text {
-  font-size: 14px;
-  @apply my-2;
-}
-
-.box-card {
-  width: 200px;
-}
+  .box-card {
+    width: 225px;
+  }
 </style>
