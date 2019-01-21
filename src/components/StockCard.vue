@@ -6,14 +6,14 @@
     </div>
     <div>
       <div class="mb-5"><span class="text-xl font-bold">{{ stock.stockPrice }}</span><span> USD</span></div>
-      <el-input-number class="mx-auto" v-model="amount" :min="0"/>
+      <el-input-number class="mx-auto" v-model="amount" @change="changeStockAmount({stockSymbol: stock.stockSymbol, amount})" :min="0"/>
     </div>
   </el-card>
 </template>
 
 <script>
   import { mapMutations } from 'vuex';
-  import { REMOVE_STOCK } from "../store/mutation-types";
+  import { CHANGE_STOCK_AMOUNT, REMOVE_STOCK } from "../store/mutation-types";
 
   export default {
     name: "StockCard",
@@ -26,7 +26,7 @@
       stock: Object
     },
     methods: {
-      ...mapMutations({removeStock: REMOVE_STOCK})
+      ...mapMutations({removeStock: REMOVE_STOCK, changeStockAmount: CHANGE_STOCK_AMOUNT})
     }
   };
 </script>

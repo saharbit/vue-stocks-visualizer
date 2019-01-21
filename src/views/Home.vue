@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <StockSymbolInput/>
     <div class="flex flex-row justify-center mt-5">
-      <StockCard v-for="stock in stocks" :key="stock.stockSymbol" :stock="stock"/>
+      <StockCard v-for="stock in userStocks" :key="stock.stockSymbol" :stock="stock"/>
     </div>
   </div>
 </template>
@@ -20,8 +20,8 @@ export default {
     StockCard
   },
   computed: {
-    stocks() {
-      return store.state.stocks;
+    userStocks() {
+      return store.state.userStocks;
     }
   }
 };
