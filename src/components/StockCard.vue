@@ -23,7 +23,7 @@
       }
     },
     props: {
-      stock: Object
+      stock: { stockPrice: String, stockSymbol: String, amount: Number}
     },
     methods: {
       ...mapMutations({removeStock: REMOVE_STOCK, changeStockAmount: CHANGE_STOCK_AMOUNT})
