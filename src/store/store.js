@@ -26,10 +26,12 @@ export default new Vuex.Store({
       state.isAppLoading = isAppLoading;
     },
     [ADD_STOCK](state, stockSymbol) {
-      state.userStocks = [
-        ...state.userStocks,
-        { stockSymbol, stockPrice: null, amount: 0 }
-      ];
+      if (!state.userStocks.find(stock => stock.stockSymbol === stockSymbol)) {
+        state.userStocks = [
+          ...state.userStocks,
+          { stockSymbol, stockPrice: null, amount: 0 }
+        ];
+      }
     },
     [REMOVE_STOCK](state, stockSymbol) {
       state.userStocks = state.userStocks.filter(
