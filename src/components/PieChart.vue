@@ -1,14 +1,11 @@
 <script>
 import { Pie, mixins } from "vue-chartjs";
-import { GET_CHART_DATA } from '../store/getter-types.js'
-import { mapGetters } from 'vuex'
-const {  } = mixins;
+
+const { reactiveProp } = mixins;
 
 export default {
   extends: Pie,
-  computed: {
-    ...mapGetters({chartData: GET_CHART_DATA})
-  },
+  mixins: [reactiveProp],
   mounted() {
     this.renderChart(this.chartData);
   }
