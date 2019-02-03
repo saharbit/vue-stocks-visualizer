@@ -11,7 +11,7 @@ export default class MarketDataService {
   }
 
   static async getAllStockSymbols () {
-    const response = await axios.get(`${ROOT_URL}/ref-data/symbols`)
+    const response = await axios.get(`${ROOT_URL}/ref-data/symbols`);
     return response.data;
   }
 }

@@ -72,8 +72,8 @@ export default new Vuex.Store({
   getters: {
     [GET_CHART_DATA](state) {
       const { userStocks } = state;
-      const labels = userStocks.map(stock => stock.stockSymbol)
-      const datasets = userStocks.map(stock => ({ data: [stock.amount]}))
+      const labels = userStocks.map(stock => stock.stockSymbol);
+      const datasets = userStocks.map(stock => ({ data: [stock.amount * stock.stockPrice]}));
 
       return { labels, datasets }
     }
