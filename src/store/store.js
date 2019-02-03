@@ -12,6 +12,7 @@ import {
   FETCH_ALL_STOCK_SYMBOLS,
   FETCH_PRICE_AND_ADD_STOCK
 } from "./action-types";
+import { GET_CHART_DATA } from './getter-types'
 
 Vue.use(Vuex);
 
@@ -66,6 +67,15 @@ export default new Vuex.Store({
         value: stock.symbol
       }));
       commit(ADD_ALL_STOCKS, mappedStocks);
+    }
+  },
+  getters: {
+    [GET_CHART_DATA](state) {
+      const { userStocks } = state;
+      const labels = userStocks.map(stock => stock.stockSymbol)
+      const datasets = userStocks.map(stock => ({ data: [stock.amount]}))
+
+      return { labels, datasets }
     }
   }
 });
