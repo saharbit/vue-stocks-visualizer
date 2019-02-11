@@ -12,7 +12,7 @@
       <el-input-number
         class="mx-auto"
         v-model="amount"
-        @change="updateStock({stockSymbol: stock.stockSymbol, amount})"
+        @change="updateStock({ stockSymbol: stock.stockSymbol, amount })"
         :min="0"
       />
     </div>
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import { UPDATE_STOCK, REMOVE_STOCK } from "../store/mutation-types";
+import { mapMutations } from 'vuex';
+import { UPDATE_STOCK, REMOVE_STOCK } from '../store/mutation-types';
 
 export default {
-  name: "StockCard",
+  name: 'StockCard',
   data() {
     return {
       amount: 0

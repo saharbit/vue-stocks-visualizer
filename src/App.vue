@@ -1,17 +1,17 @@
 <template>
   <div class="app container flex mx-auto">
-    <div v-loading.fullscreen.lock="isAppLoading"/>
-    <router-view/>
+    <div v-loading.fullscreen.lock="isAppLoading" />
+    <router-view />
   </div>
 </template>
 
 <script>
-import { FETCH_ALL_STOCK_SYMBOLS } from "./store/action-types";
-import { mapActions, mapState } from "vuex";
+import { FETCH_ALL_STOCK_SYMBOLS } from './store/action-types';
+import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: "app",
-  computed: mapState(["isAppLoading"]),
+  name: 'app',
+  computed: mapState(['isAppLoading']),
   methods: {
     ...mapActions({ fetchAllStocks: FETCH_ALL_STOCK_SYMBOLS })
   },
@@ -23,9 +23,9 @@ export default {
 
 <style>
 .app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale
   color: #2c3e50;
 }
 </style>

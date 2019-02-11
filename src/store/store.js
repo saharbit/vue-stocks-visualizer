@@ -1,18 +1,9 @@
-import Vue from "vue";
-import Vuex from "vuex";
-import MarketDataService from "../services/MarketDataService";
-import {
-  ADD_ALL_STOCKS,
-  ADD_STOCK,
-  CHANGE_APP_STATE,
-  UPDATE_STOCK,
-  REMOVE_STOCK
-} from "./mutation-types";
-import {
-  FETCH_ALL_STOCK_SYMBOLS,
-  FETCH_PRICE_AND_ADD_STOCK
-} from "./action-types";
-import { GET_CHART_DATA } from './getter-types'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import MarketDataService from '../services/MarketDataService';
+import { ADD_ALL_STOCKS, ADD_STOCK, CHANGE_APP_STATE, UPDATE_STOCK, REMOVE_STOCK } from './mutation-types';
+import { FETCH_ALL_STOCK_SYMBOLS, FETCH_PRICE_AND_ADD_STOCK } from './action-types';
+import { GET_CHART_DATA } from './getter-types';
 
 Vue.use(Vuex);
 
@@ -28,22 +19,15 @@ export default new Vuex.Store({
     },
     [ADD_STOCK](state, stockSymbol) {
       if (!state.userStocks.find(stock => stock.stockSymbol === stockSymbol)) {
-        state.userStocks = [
-          ...state.userStocks,
-          { stockSymbol, stockPrice: null, amount: 0 }
-        ];
+        state.userStocks = [...state.userStocks, { stockSymbol, stockPrice: null, amount: 0 }];
       }
     },
     [REMOVE_STOCK](state, stockSymbol) {
-      state.userStocks = state.userStocks.filter(
-        stock => stock.stockSymbol !== stockSymbol
-      );
+      state.userStocks = state.userStocks.filter(stock => stock.stockSymbol !== stockSymbol);
     },
     [UPDATE_STOCK](state, { stockSymbol, ...rest }) {
       const { userStocks } = state;
-      const index = state.userStocks.findIndex(
-        stock => stock.stockSymbol === stockSymbol
-      );
+      const index = state.userStocks.findIndex(stock => stock.stockSymbol === stockSymbol);
       Vue.set(userStocks, index, { ...userStocks[index], ...rest });
     },
     [ADD_ALL_STOCKS](state, stocks) {
@@ -54,9 +38,7 @@ export default new Vuex.Store({
   actions: {
     async [FETCH_PRICE_AND_ADD_STOCK]({ commit }, stockSymbol) {
       commit(ADD_STOCK, stockSymbol);
-      const stockPrice = await MarketDataService.getStockPriceBySymbol(
-        stockSymbol
-      );
+      const stockPrice = await MarketDataService.getStockPriceBySymbol(stockSymbol);
       commit(UPDATE_STOCK, { stockSymbol, stockPrice });
     },
     async [FETCH_ALL_STOCK_SYMBOLS]({ commit }) {
@@ -73,9 +55,9 @@ export default new Vuex.Store({
     [GET_CHART_DATA](state) {
       const { userStocks } = state;
       const labels = userStocks.map(stock => stock.stockSymbol);
-      const datasets = userStocks.map(stock => ({ data: [stock.amount * stock.stockPrice]}));
+      const datasets = userStocks.map(stock => ({ data: [stock.amount * stock.stockPrice] }));
 
-      return { labels, datasets }
+      return { labels, datasets };
     }
   }
 });

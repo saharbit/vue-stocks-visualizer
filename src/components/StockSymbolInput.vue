@@ -5,44 +5,43 @@
     :fetch-suggestions="querySearch"
     placeholder="STOCK SYMBOL (e.g AAPL)"
     :trigger-on-focus="false"
-    @select="addStock(input); clearInput()"
+    @select="
+      addStock(input);
+      clearInput();
+    "
   />
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
-import { FETCH_PRICE_AND_ADD_STOCK } from "../store/action-types";
+import { mapActions, mapState } from 'vuex';
+import { FETCH_PRICE_AND_ADD_STOCK } from '../store/action-types';
 
 export default {
-  name: "StockSymbolInput",
+  name: 'StockSymbolInput',
   data() {
     return {
-      input: ""
+      input: ''
     };
   },
-  computed: mapState(["allStockSymbols"]),
+  computed: mapState(['allStockSymbols']),
   methods: {
     clearInput() {
-      this.input = "";
+      this.input = '';
     },
 
     ...mapActions({ addStock: FETCH_PRICE_AND_ADD_STOCK }),
 
     querySearch(queryString, cb) {
-      const results = queryString
-        ? this.allStockSymbols.filter(this.filterStocks(queryString))
-        : this.allStockSymbols;
+      const results = queryString ? this.allStockSymbols.filter(this.filterStocks(queryString)) : this.allStockSymbols;
 
       cb(results);
     },
 
     filterStocks(queryString) {
-      return stock =>
-        stock.symbol.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
+      return stock => stock.symbol.toLowerCase().indexOf(queryString.toLowerCase()) === 0;
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
