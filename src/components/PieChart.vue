@@ -1,9 +1,10 @@
 <script>
-import { Pie, mixins } from "vue-chartjs";
+import { Pie, mixins } from 'vue-chartjs';
 
 const { reactiveProp } = mixins;
 
 export default {
+  name: 'PieChart',
   extends: Pie,
   mixins: [reactiveProp],
   mounted() {
@@ -12,5 +13,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
