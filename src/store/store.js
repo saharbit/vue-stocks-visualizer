@@ -19,7 +19,15 @@ export default new Vuex.Store({
     },
     [ADD_STOCK](state, stockSymbol) {
       if (!state.userStocks.find(stock => stock.stockSymbol === stockSymbol)) {
-        state.userStocks = [...state.userStocks, { stockSymbol, stockPrice: null, amount: 0 }];
+        state.userStocks = [
+          ...state.userStocks,
+          {
+            stockSymbol,
+            stockPrice: null,
+            amount: 0,
+            color: '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6)
+          }
+        ];
       }
     },
     [REMOVE_STOCK](state, stockSymbol) {
@@ -61,7 +69,7 @@ export default new Vuex.Store({
       userStocks.map(stock => {
         labels.push(stock.stockSymbol);
         data.push((stock.amount * stock.stockPrice).toFixed(2));
-        backgroundColor.push('#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6));
+        backgroundColor.push(stock.color);
       });
 
       const datasets = [{ data, backgroundColor }];
