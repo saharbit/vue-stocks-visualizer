@@ -54,9 +54,17 @@ export default new Vuex.Store({
   getters: {
     [GET_CHART_DATA](state) {
       const { userStocks } = state;
-      const labels = userStocks.map(stock => stock.stockSymbol);
-      const datasets = userStocks.map(stock => ({ data: [stock.amount * stock.stockPrice] }));
+      let labels = [];
+      let backgroundColor = [];
+      let data = [];
 
+      userStocks.map(stock => {
+        labels.push(stock.stockSymbol);
+        data.push((stock.amount * stock.stockPrice).toFixed(2));
+        backgroundColor.push('#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6));
+      });
+
+      const datasets = [{ data, backgroundColor }];
       return { labels, datasets };
     }
   }
