@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 import MarketDataService from '../services/MarketDataService';
 import { ADD_ALL_STOCKS, ADD_STOCK, CHANGE_APP_STATE, UPDATE_STOCK, REMOVE_STOCK } from './mutation-types';
 import { FETCH_ALL_STOCK_SYMBOLS, FETCH_PRICE_AND_ADD_STOCK } from './action-types';
-import { GET_CHART_DATA } from './getter-types';
+import { GET_CHART_DATA, GET_NET_WORTH } from './getter-types';
 
 Vue.use(Vuex);
 
@@ -74,6 +74,14 @@ export default new Vuex.Store({
 
       const datasets = [{ data, backgroundColor }];
       return { labels, datasets };
+    },
+    [GET_NET_WORTH](state) {
+      const { userStocks } = state;
+      if (userStocks.length > 0) {
+        return userStocks.reduce((x, y) => x + y.stockPrice * y.amount, 0).toFixed(2);
+      } else {
+        return 0;
+      }
     }
   }
 });

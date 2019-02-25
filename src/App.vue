@@ -1,6 +1,6 @@
 <template>
   <div class="app container flex mx-auto">
-    <div v-loading.fullscreen.lock="isAppLoading" />
+    <div v-loading.fullscreen.lock="isAppLoading"></div>
     <router-view />
   </div>
 </template>
@@ -22,7 +22,11 @@ export default {
 </script>
 
 <style>
+html {
+  background-color: #eaeaf5;
+}
 .app {
+  min-height: 100vh;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
