@@ -1,6 +1,6 @@
 # vue-portfolio
 
-[Demo](https://stockspie-21796.firebaseapp.com/)
+[Demo](https://stockspie-21796.web.app/)
 
 ## Project setup
 
