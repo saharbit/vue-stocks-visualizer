@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-1 flex-col">
-    <img alt="Vue logo" class="h-10 absolute mt-2 ml-2" src="../assets/logo.png" />
-    <pie-chart class="pie-chart self-center" :chart-data="chartData" />
-    <h3 class="self-center mt-3">Total net worth: {{ netWorth }}$</h3>
+    <img alt="Vue logo" class="absolute" src="../assets/logo.png" />
+    <h2 class="self-center mt-3">NET WORTH: {{ netWorth }} $</h2>
     <stock-symbol-input />
-    <div class="flex flex-row flex-wrap justify-center">
+    <pie-chart class="pie-chart self-center mb-2" :chart-data="chartData" />
+    <div class="flex flex-row flex-wrap">
       <stock-card v-for="stock in userStocks" :key="stock.stockSymbol" :stock="stock" />
     </div>
   </div>
