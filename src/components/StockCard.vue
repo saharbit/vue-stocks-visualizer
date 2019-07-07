@@ -21,7 +21,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
-import { UPDATE_STOCK, REMOVE_STOCK } from '../store/mutation-types';
+import { REMOVE_STOCK, UPDATE_STOCK } from '../store/constants';
 
 export default {
   name: 'StockCard',

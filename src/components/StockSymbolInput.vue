@@ -14,7 +14,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import { FETCH_PRICE_AND_ADD_STOCK } from '../store/action-types';
+import { FETCH_PRICE_AND_ADD_STOCK } from '../store/constants';
 
 export default {
   name: 'StockSymbolInput',

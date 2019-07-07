@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { FETCH_ALL_STOCK_SYMBOLS } from './store/action-types';
 import { mapActions, mapState } from 'vuex';
+import { FETCH_ALL_STOCK_SYMBOLS } from './store/constants';
 
 export default {
   name: 'app',
@@ -23,11 +23,11 @@ export default {
 
 <style>
 html {
-  background-color: #eaeaf5;
+  background-color: #759276;
 }
 .app {
   min-height: 100vh;
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

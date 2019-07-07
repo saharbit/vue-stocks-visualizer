@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-1 flex-col">
-    <img alt="Vue logo" class="absolute" src="../assets/logo.png" />
-    <h2 class="self-center mt-3">NET WORTH: {{ netWorth }} $</h2>
+    <img alt="Vue logo" class="absolute logo" src="../assets/logo.png" />
+    <h2 class="self-center mt-3">Portfolio worth: {{ netWorth }}$</h2>
     <stock-symbol-input />
     <pie-chart class="pie-chart self-center mb-2" :chart-data="chartData" />
     <div class="flex flex-row flex-wrap">
@@ -15,8 +15,8 @@ import store from '../store/store';
 import StockSymbolInput from '../components/StockSymbolInput.vue';
 import StockCard from '../components/StockCard.vue';
 import PieChart from '../components/PieChart.vue';
-import { GET_CHART_DATA, GET_NET_WORTH } from '../store/getter-types';
 import { mapGetters } from 'vuex';
+import { GET_CHART_DATA, GET_NET_WORTH } from '../store/constants';
 
 export default {
   name: 'home',
@@ -38,5 +38,10 @@ export default {
 .pie-chart {
   height: 250px;
   width: 250px;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
 }
 </style>
