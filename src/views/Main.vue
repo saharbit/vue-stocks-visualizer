@@ -1,10 +1,8 @@
 <template>
-  <div class="flex flex-1 flex-col">
-    <img alt="Vue logo" class="absolute logo" src="../assets/logo.png" />
-    <h2 class="self-center mt-3">Portfolio worth: {{ netWorth }}$</h2>
+  <div class="flex flex-col flex-1 container mx-auto">
     <stock-symbol-input />
     <pie-chart class="pie-chart self-center mb-2" :chart-data="chartData" />
-    <div class="flex flex-row flex-wrap">
+    <div class="flex flex-row flex-wrap justify-center my-auto">
       <stock-card v-for="stock in userStocks" :key="stock.stockSymbol" :stock="stock" />
     </div>
   </div>
@@ -19,7 +17,7 @@ import { mapGetters } from 'vuex';
 import { GET_CHART_DATA, GET_NET_WORTH } from '../store/constants';
 
 export default {
-  name: 'home',
+  name: 'main',
   components: {
     StockSymbolInput,
     StockCard,

@@ -1,6 +1,6 @@
 <template>
   <el-autocomplete
-    class="inline-input w-full md:w-1/2 lg:w-1/3 mx-auto px-5 my-3"
+    class="inline-input w-2/3 md:w-1/2 lg:w-1/3 mx-auto my-3"
     v-model="input"
     :fetch-suggestions="querySearch"
     placeholder="STOCK SYMBOL (e.g AAPL)"
